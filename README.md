@@ -6,6 +6,8 @@ This repository contains a voice-activated and chatbot-based product to assist b
 
 You can experience the product firsthand by contacting our demo line:
 
+https://wa.me/14152026842 (Click to try chat)
+
 **Phone: +1 (415) 202-6842**
 
 When you chat with our WhatsApp, you'll be able to interact with our assistant and see how it can revolutionize the beauty consultation process.
