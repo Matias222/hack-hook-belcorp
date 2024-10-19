@@ -4,7 +4,7 @@ from datetime import datetime
 import agentes
 import json
 import random
-
+import requests
 
 current_date = datetime.now().strftime('%Y-%m-%d')
 
@@ -55,6 +55,7 @@ def flujo_pedido(state:ApiState):
         for i in rpta["pedidos"]:
 
             id=random.randint(1,100000)+random.randint(50000,60000)
+            sku_rand=skus_poc[random.randint(0,9)]
 
             producto=i[0]
             cantidad=i[1]
@@ -62,8 +63,10 @@ def flujo_pedido(state:ApiState):
             print(producto)
             print(cantidad)
             
-            Repository(Pedidos).write(id=id,sku=skus_poc[random.randint(0,9)],numero=state.numero,fecha=current_date,cantidad=cantidad,nombre_vendio=rpta["nombre_clienta"],numero_vendio=rpta["numero_clienta"])
+            Repository(Pedidos).write(id=id,sku=sku_rand,numero=state.numero,fecha=current_date,cantidad=cantidad,nombre_vendio=rpta["nombre_clienta"],numero_vendio=rpta["numero_clienta"])
 
         state.respuesta="Pedido registrado muchas gracias!"
+
+        requests.get(f"https://5kivbvxais.us-east-1.awsapprunner.com/products/{state.numero[10:]}/{sku_rand}/closest")
 
         #LLAMADA A LA API DE JOAQUIN (MI NUMERO)

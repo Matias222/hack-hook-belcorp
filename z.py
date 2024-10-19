@@ -1,9 +1,4 @@
-from db_functions import Repository, Consultora
-import psycopg2
 
-#Repository(Consultora).write(numero="3",estado="Base")
+a="whatsapp:+51927144823"
 
-z=Repository(Consultora).read_by_primary_key("31")
-
-print(z)
-
+print(a[10:])
