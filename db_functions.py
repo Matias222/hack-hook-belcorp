@@ -52,11 +52,6 @@ class Repository:
     def read_all(self):
         with SessionLocal() as db:
             return db.query(self.model).all()
-
-    def nn(consulta,numero=1):
-        with SessionLocal() as db:
-            ans=db.scalars(select(Producto).order_by(Producto.embedding.l2_distance(consulta)).limit(numero))
-            return ans.all()
     
     def update(self, pk, **kwargs):
         with SessionLocal() as db:
